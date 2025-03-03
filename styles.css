@@ -1,4 +1,4 @@
-/* font color */
+/* font and color */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -11,7 +11,7 @@ body {
 header {
     background-color: #804de7;
     color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -25,13 +25,13 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 30px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 10px;
+    padding: none;
     display: block;
     transition: 0.3s;
 }
@@ -42,65 +42,46 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* main content layout */
+/* main ellements */
 main {
+    padding: 20px;
     display: flex;
     justify-content: center;
-    padding: 20px;
 }
 
-.left-column {
-    width: 25%;
-    background-color: white;
-    padding: 20px;
-}
-
-.right-column {
-    width: 75%;
-    background-color: #1A659E;
-    padding: 20px;
-    color: white;
-}
-
-/* remove box shadow */
 section {
-    max-width: 100%;
-    background-color: transparent;
-    padding: 0;
-    border-radius: 0;
-    box-shadow: none;
+    max-width: 800px;
+    padding: 20px;
+
 }
 
-/* table of contents */
-.toc ul {
-    list-style: none;
+/* toc specs */
+.toc {
+    list-style-type: none;
     padding: 0;
+    margin-top: 10px;
 }
 
-.toc ul li {
+.toc li {
     margin-bottom: 10px;
 }
 
-.toc ul li a {
-    color: white;
+.toc a {
+    color: #804de7;
     text-decoration: none;
     font-weight: bold;
     position: relative;
 }
 
-.toc ul li a::after {
+.toc a::after {
     content: "";
     display: block;
-    width: 100%;
+    width: 0;
     height: 2px;
-    background-color: white;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    position: absolute;
-    bottom: -2px;
-    left: 0;
+    background: #804de7;
+    transition: width 0.3s;
 }
 
-.toc ul li a:hover::after {
-    transform: scaleX(1);
+.toc a:hover::after {
+    width: 100%;
 }
