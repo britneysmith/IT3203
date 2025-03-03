@@ -1,4 +1,4 @@
-/* font and color */
+/* font color */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -42,11 +42,11 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* main ellements */
+/* main content layout */
 main {
-    padding: 20px;
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
 .left-column {
