@@ -1,4 +1,4 @@
-/* General body styles */
+/* font and color */
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -7,7 +7,7 @@ body {
     padding: 0;
 }
 
-/* Header and navigation */
+/* header and nav */
 header {
     background-color: #804de7;
     color: white;
@@ -25,7 +25,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0 30px;
 }
 
 nav ul li a {
@@ -42,7 +42,7 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* Main content */
+/* main ellements */
 main {
     padding: 20px;
     display: flex;
@@ -57,7 +57,7 @@ section {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Table of Contents Styling */
+/* toc specs */
 .toc {
     list-style-type: none;
     padding: 0;
