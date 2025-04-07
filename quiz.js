@@ -50,7 +50,7 @@ const questions = [
       ]
     }
   ];
-  
+  //setting up javascript actions
   const quizContainer = document.querySelector(".quiz-container");
   const questionElement = document.querySelector(".question");
   const optionsContainer = document.querySelector(".options");
@@ -63,7 +63,7 @@ const questions = [
     const currentQuestion = questions[currentQuestionIndex];
     questionElement.textContent = currentQuestion.question;
     optionsContainer.innerHTML = "";
-  
+  //fill in the blank
     if (currentQuestion.type === "text") {
       const input = document.createElement("input");
       input.type = "text";
@@ -73,7 +73,7 @@ const questions = [
         currentQuestion.options.forEach(option => {
           const div = document.createElement("div");
           div.className = "option";
-          
+         //checkbox or multiple answer question 
           const label = document.createElement("label");
           label.style.cursor = "pointer";
           
@@ -140,12 +140,47 @@ const questions = [
     }
   }
   
-  function showResults() {
-    quizContainer.innerHTML = `
-      <h2>You scored ${score} out of ${questions.length}</h2>
-      <button onclick="location.reload()" class="submit-btn">Start Over</button>
-    `;
+  function getUserAnswer(index) {
+    const q = questions[index];
+  
+    if (q.type === "text") {
+      const input = document.querySelector(".text-input");
+      return input ? input.value.trim() : "";
+    } else if (q.type === "checkbox") {
+      const checkboxes = document.querySelectorAll("input[type=checkbox]");
+      return Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+    } else {
+      const selected = document.querySelector(".option.selected");
+      return selected ? selected.textContent : "";
+    }
   }
+  
+//score and answer key page actions
+  function showResults() {
+    let resultHTML = `<h2>You scored ${score} out of ${questions.length}</h2>`;
+  
+    resultHTML += "<h3>Answer Key:</h3><ul>";
+  
+    questions.forEach((q, index) => {
+      const userAnswer = getUserAnswer(index);
+      const correctAnswer = Array.isArray(q.correct) ? q.correct.join(", ") : q.correct;
+      const userAnswerText = Array.isArray(userAnswer) ? userAnswer.join(", ") : userAnswer;
+  
+      resultHTML += `
+        <li>
+          <strong>Q${index + 1}:</strong> ${q.question}<br>
+          <span style="color: green;">Correct Answer:</span> ${correctAnswer}<br>
+          <span style="color: ${userAnswerText === correctAnswer ? "green" : "red"};">Your Answer:</span> ${userAnswerText || "No answer"}
+        </li><br>
+      `;
+    });
+  
+    resultHTML += "</ul><button onclick=\"location.reload()\" class=\"submit-btn\">Start Over</button>";
+    quizContainer.innerHTML = resultHTML;
+  }
+  
   
   submitBtn.addEventListener("click", handleNextQuestion);
   
