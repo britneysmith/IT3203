@@ -1,144 +1,154 @@
+// Quiz questions with types and correct answers
 const questions = [
     {
-      type: "radio",
       question: "What is the primary function of a website cookie?",
-      options: {
-        a: "To install software on your computer",
-        b: "To help websites remember you and your preferences",
-        c: "To block ads"
-      },
-      correct: "b"
+      options: [
+        "To install software on your computer",
+        "To help websites remember you and your preferences",
+        "To block ads",
+        "To be eaten"
+      ],
+      correct: "To help websites remember you and your preferences"
     },
     {
-      type: "radio",
       question: "Which of the following is NOT a type of website cookie?",
-      options: {
-        a: "Session cookie",
-        b: "Persistent cookie",
-        c: "Malware cookie"
-      },
-      correct: "c"
+      options: [
+        "Session cookie",
+        "Persistent cookie",
+        "Malware cookie",
+        "Persistent cookie"
+      ],
+      correct: "Malware cookie"
     },
     {
-      type: "text",
+      type: "text", // fill-in-the-blank question
       question: "Fill in the blank: Cookies can help websites remember your login details and __________.",
       correct: "preferences"
     },
     {
-      type: "checkbox",
-      question: "Which of these are potential risks of accepting website cookies? (Select all that apply)",
-      options: {
-        a: "Your browsing data might be shared with third parties",
-        b: "Hackers can track your exact passwords using cookies",
-        c: "You may see more targeted ads based on your activity",
-        d: "Your internet speed will drastically slow down"
-      },
-      correct: ["a", "c"]
+      question: "What's a smart way to handle cookies when visiting unfamiliar websites?",
+      options: [
+        "Always accept all cookies to avoid popups",
+        "Clear cookies every 10 minutes",
+        "Customize or reject non-essential cookies",
+        "eat them"
+      ],
+      correct: "Customize or reject non-essential cookies"
     },
     {
-      type: "radio",
-      question: "What’s a smart way to handle cookies when visiting unfamiliar websites?",
-      options: {
-        a: "Always accept all cookies to avoid popups",
-        b: "Clear cookies every 10 minutes",
-        c: "Customize or reject non-essential cookies"
-      },
-      correct: "c"
+      type: "checkbox", // multiple-answer question
+      question: "Which of these are potential risks of accepting website cookies? (Select all that apply)",
+      options: [
+        "Your browsing data might be shared with third parties",
+        "Hackers can track your exact passwords using cookies",
+        "You may see more targeted ads based on your activity",
+        "Your internet speed will drastically slow down"
+      ],
+      correct: [
+        "Your browsing data might be shared with third parties",
+        "You may see more targeted ads based on your activity"
+      ]
     }
   ];
   
-  let currentQuestion = 0;
-  const answers = [];
+  const quizContainer = document.querySelector(".quiz-container");
+  const questionElement = document.querySelector(".question");
+  const optionsContainer = document.querySelector(".options");
+  const submitBtn = document.querySelector(".submit-btn");
   
-  const questionContainer = document.getElementById("question-container");
-  const nextBtn = document.getElementById("next-btn");
-  const counter = document.getElementById("question-counter");
-  const results = document.getElementById("results");
+  let currentQuestionIndex = 0;
+  let score = 0;
   
-  function renderQuestion() {
-    const q = questions[currentQuestion];
-    let html = `<p>${currentQuestion + 1}. ${q.question}</p>`;
+  function showQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.textContent = currentQuestion.question;
+    optionsContainer.innerHTML = "";
   
-    if (q.type === "radio" || q.type === "checkbox") {
-      for (const [key, text] of Object.entries(q.options)) {
-        html += `
-          <label>
-            <input type="${q.type}" name="q${currentQuestion}" value="${key}">
-            ${key}) ${text}
-          </label><br>`;
-      }
-    } else if (q.type === "text") {
-      html += `<input type="text" name="q${currentQuestion}">`;
-    }
-  
-    questionContainer.innerHTML = html;
-    counter.textContent = `${currentQuestion + 1} of ${questions.length} Questions`;
-    nextBtn.textContent = currentQuestion === questions.length - 1 ? "Submit Quiz" : "Next Question";
-  }
-  
-  function getUserAnswer() {
-    const q = questions[currentQuestion];
-    if (q.type === "text") {
-      return document.querySelector(`input[name="q${currentQuestion}"]`).value.trim().toLowerCase();
-    }
-  
-    if (q.type === "radio") {
-      const selected = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
-      return selected ? selected.value : null;
-    }
-  
-    if (q.type === "checkbox") {
-      return Array.from(document.querySelectorAll(`input[name="q${currentQuestion}"]:checked`))
-        .map(cb => cb.value);
-    }
-  }
-  
-  function checkAnswers() {
-    let score = 0;
-    let summary = [];
-  
-    questions.forEach((q, i) => {
-      const userAnswer = answers[i];
-      let correctDisplay;
-  
-      if (q.type === "text") {
-        correctDisplay = q.correct;
-        if (userAnswer === q.correct) score++;
-      } else if (q.type === "radio") {
-        correctDisplay = q.correct;
-        if (userAnswer === q.correct) score++;
-      } else if (q.type === "checkbox") {
-        const isCorrect = q.correct.every(c => userAnswer.includes(c)) && userAnswer.length === q.correct.length;
-        correctDisplay = q.correct.join(", ");
-        if (isCorrect) score++;
-      }
-  
-      summary.push(`Q${i + 1}: Your answer: ${Array.isArray(userAnswer) ? userAnswer.join(", ") : userAnswer || "No answer"} — Correct: ${correctDisplay}`);
-    });
-  
-    results.innerHTML = `You scored ${score}/${questions.length}.<br><br>` + summary.join("<br>");
-    results.classList.remove("hidden");
-    nextBtn.disabled = true;
-  }
-  
-  nextBtn.addEventListener("click", () => {
-    const userAnswer = getUserAnswer();
-    if (!userAnswer || (Array.isArray(userAnswer) && userAnswer.length === 0)) {
-      alert("Please select or enter an answer before continuing.");
-      return;
-    }
-  
-    answers[currentQuestion] = userAnswer;
-  
-    if (currentQuestion < questions.length - 1) {
-      currentQuestion++;
-      renderQuestion();
+    if (currentQuestion.type === "text") {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.className = "text-input";
+      optionsContainer.appendChild(input);
+    } else if (currentQuestion.type === "checkbox") {
+        currentQuestion.options.forEach(option => {
+          const div = document.createElement("div");
+          div.className = "option";
+          
+          const label = document.createElement("label");
+          label.style.cursor = "pointer";
+          
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.value = option;
+          checkbox.style.marginRight = "10px";
+          
+          label.appendChild(checkbox);
+          label.appendChild(document.createTextNode(option));
+          div.appendChild(label);
+          optionsContainer.appendChild(div);
+        });    
     } else {
-      questionContainer.innerHTML = "";
-      counter.textContent = "Quiz Complete";
-      nextBtn.textContent = "Submitted";
-      checkAnswers();
+      currentQuestion.options.forEach(option => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.textContent = option;
+        div.addEventListener("click", () => {
+          document.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+          div.classList.add("selected");
+        });
+        optionsContainer.appendChild(div);
+      });
     }
-  });
+  }
   
-  renderQuestion();
+  function checkAnswer() {
+    const currentQuestion = questions[currentQuestionIndex];
+    let isCorrect = false;
+  
+    if (currentQuestion.type === "text") {
+      const input = document.querySelector(".text-input");
+      if (input && input.value.trim().toLowerCase() === currentQuestion.correct.toLowerCase()) {
+        isCorrect = true;
+      }
+    } else if (currentQuestion.type === "checkbox") {
+      const checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
+      const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+      if (
+        selectedValues.length === currentQuestion.correct.length &&
+        selectedValues.every(val => currentQuestion.correct.includes(val))
+      ) {
+        isCorrect = true;
+      }
+    } else {
+      const selectedOption = document.querySelector(".option.selected");
+      if (selectedOption && selectedOption.textContent === currentQuestion.correct) {
+        isCorrect = true;
+      }
+    }
+  
+    if (isCorrect) score++;
+  }
+  
+  function handleNextQuestion() {
+    checkAnswer();
+    currentQuestionIndex++;
+  
+    if (currentQuestionIndex < questions.length) {
+      showQuestion();
+    } else {
+      showResults();
+    }
+  }
+  
+  function showResults() {
+    quizContainer.innerHTML = `
+      <h2>You scored ${score} out of ${questions.length}</h2>
+      <button onclick="location.reload()" class="submit-btn">Start Over</button>
+    `;
+  }
+  
+  submitBtn.addEventListener("click", handleNextQuestion);
+  
+  // Show the first question on page load
+  showQuestion();
+  
