@@ -1,3 +1,5 @@
+
+********
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +27,19 @@
             </ul>
         </nav>
     </header>
-
-    <main class="quiz-container">
-        <form id="quizForm">
-            <div id="question-container"></div>
-            <div class="quiz-footer">
-                <span id="question-counter">1 of 5 Questions</span>
-                <button type="button" id="next-btn">Next Question</button>
-            </div>
-        </form>
-        <div id="results" class="result hidden"></div>
-    </main>
+    <div class="quiz-container">
+        <h1 class="quiz-title">Pop Quiz!</h1>
+        <div class="question-container">
+            <h3 class="question">question 1</h3>
+            <ul class="options">
+                <l1 class="option">1</l1>
+                <li class="option">2</li>
+                <li class="option">3</li>
+                <l1 class="option">4</l1>
+            </ul>
+        </div>
+        <button class="submit-btn">Next Question</button>     
+    </div>
     <script src="quiz.js"></script>
-
 </body>
 </html>
