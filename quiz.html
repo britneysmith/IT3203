@@ -27,101 +27,16 @@
     </header>
 
     <main class="quiz-container">
-        <h2>Take the quiz!</h2>
         <form id="quizForm">
-            <!-- Q1 -->
-            <div class="question">
-                <p>1. What is the primary function of a website cookie?</p>
-                <label><input type="radio" name="q1" value="a"> a) To install software on your computer</label><br>
-                <label><input type="radio" name="q1" value="b"> b) To help websites remember you and your preferences</label><br>
-                <label><input type="radio" name="q1" value="c"> c) To block ads</label>
+            <div id="question-container"></div>
+            <div class="quiz-footer">
+                <span id="question-counter">1 of 5 Questions</span>
+                <button type="button" id="next-btn">Next Question</button>
             </div>
-
-            <!-- Q2 -->
-            <div class="question">
-                <p>2. Which of the following is NOT a type of website cookie?</p>
-                <label><input type="radio" name="q2" value="a"> a) Session cookie</label><br>
-                <label><input type="radio" name="q2" value="b"> b) Persistent cookie</label><br>
-                <label><input type="radio" name="q2" value="c"> c) Malware cookie</label>
-            </div>
-
-            <!-- Q3 -->
-            <div class="question">
-                <p>3. Fill in the blank: Cookies can help websites remember your login details and __________.</p>
-                <input type="text" name="q3">
-            </div>
-
-            <!-- Q4 -->
-            <div class="question">
-                <p>4. Which of these are potential risks of accepting website cookies? (Select all that apply)</p>
-                <label><input type="checkbox" name="q4" value="a"> a) Your browsing data might be shared with third parties</label><br>
-                <label><input type="checkbox" name="q4" value="b"> b) Hackers can track your exact passwords using cookies</label><br>
-                <label><input type="checkbox" name="q4" value="c"> c) You may see more targeted ads based on your activity</label><br>
-                <label><input type="checkbox" name="q4" value="d"> d) Your internet speed will drastically slow down</label>
-            </div>
-
-            <!-- Q5 -->
-            <div class="question">
-                <p>5. What’s a smart way to handle cookies when visiting unfamiliar websites?</p>
-                <label><input type="radio" name="q5" value="a"> a) Always accept all cookies to avoid popups</label><br>
-                <label><input type="radio" name="q5" value="b"> b) Clear cookies every 10 minutes</label><br>
-                <label><input type="radio" name="q5" value="c"> c) Customize or reject non-essential cookies</label>
-            </div>
-
-            <button type="submit">Submit Quiz</button>
-            <button type="button" onclick="restartQuiz()">Restart</button>
         </form>
-
         <div id="results" class="result hidden"></div>
     </main>
+    <script src="quiz.js"></script>
 
-    <script>
-        function restartQuiz() {
-            document.getElementById("quizForm").reset();
-            document.getElementById("results").innerHTML = '';
-            document.getElementById("results").classList.add("hidden");
-        }
-
-        document.getElementById("quizForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-
-            let score = 0;
-            const results = [];
-
-            // Q1
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            if (q1?.value === "b") score++; 
-            results.push(`Q1: ${q1?.value || "No answer"} — Correct: b`);
-
-            // Q2
-            const q2 = document.querySelector('input[name="q2"]:checked');
-            if (q2?.value === "c") score++;
-            results.push(`Q2: ${q2?.value || "No answer"} — Correct: c`);
-
-            // Q3
-            const q3 = document.querySelector('input[name="q3"]').value.trim().toLowerCase();
-            if (q3 === "preferences") score++;
-            results.push(`Q3: ${q3 || "No answer"} — Correct: preferences`);
-
-            // Q4
-            const q4 = Array.from(document.querySelectorAll('input[name="q4"]:checked')).map(cb => cb.value);
-            const correctQ4 = ["a", "c"];
-            const q4Correct = correctQ4.every(val => q4.includes(val)) && q4.length === correctQ4.length;
-            if (q4Correct) score++;
-            results.push(`Q4: [${q4.join(", ") || "No answer"}] — Correct: a, c`);
-
-            // Q5
-            const q5 = document.querySelector('input[name="q5"]:checked');
-            if (q5?.value === "c") score++;
-            results.push(`Q5: ${q5?.value || "No answer"} — Correct: c`);
-
-            const pass = score >= 3 ? "Passed!" : "Try again!";
-            const resultText = `You scored ${score}/5 — ${pass}<br><br>` + results.join("<br>");
-            
-            const resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = resultText;
-            resultsDiv.classList.remove("hidden");
-        });
-    </script>
 </body>
 </html>

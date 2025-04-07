@@ -85,3 +85,41 @@ section {
 .toc a:hover::after {
     width: 100%;
 }
+
+.quiz-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#next-btn {
+    background-color: #004E89;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#next-btn:hover {
+    background-color: #1A659E;
+}
+
+.result {
+    margin-top: 30px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #f3f3f3;
+    border-radius: 6px;
+}
