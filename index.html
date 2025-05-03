@@ -1,42 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Cookies</title>
-    <link rel="stylesheet" href="styles.css">
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Byte Sized Cookies</title>
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+ <!-- Poppins font-->
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Byte Sized Cookies</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">What are they?</a></li>
-                <li><a href="accept.html">Should you accept them?</a></li>
-                <li><a href="references.html">References</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Welcome!</h2>
-            <p>Let's break down what website cookies are and how they affect our browsing experiences.</p>
+  <!-- navbar -->
+  <header>
+    <nav class="navbar">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <h1 class="logo">Byte Sized Cookies</h1>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">Cookies</a></li>
+        <li><a href="accept.html">SEO</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+<!-- table of contents -->
+  <main>
+    <section class="toc-box">
+      <h2>Table of Contents</h2>
+      <ul class="toc">
+        <li><a href="about.html">Cookies</a></li>
+        <li><a href="accept.html">Search Engine Optimization</a></li>
+        <li class="collapsible">
+          <button class="collapse-btn" onclick="toggleConcepts()">
+            Key Terms <span id="toggleIcon">+</span>
+          </button>
+          <ul class="concept-list" id="conceptList">
+            <li>Cookies</li>
+            <li>Session Cookie</li>
+            <li>Persistent Cookie</li>
+            <li>On-Page SEO</li>
+            <li>Off-Page SEO</li>
+            <li>Technical SEO</li>
+            <li>Backlink</li>
+          </ul>
+        </li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </section>
+<!-- intro blurb -->
+    <section class="intro">
+      <h1> Welcome!</h1> 
+      <p>
+        This informational site acts as a place to learn all about internet cookies and search engine optimization –
+        making visitors feel aware and in control of their data. After reading through both topics, please complete our
+        quiz to test your knowledge.
+      </p>
+    
+      <!-- terms table -->
+      <div class="terms-table">
+        <h2>Key Terms & Definitions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>Definition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cookies</td><td>Small text files stored by websites to remember user info and preferences.</td></tr>
+            <tr><td>Session Cookie</td><td>Temporary cookie that disappears when the browser is closed.</td></tr>
+            <tr><td>Persistent Cookie</td><td>Stays on a device after the browser is closed to retain info long-term.</td></tr>
+            <tr><td>On-Page SEO</td><td>Optimizing content and HTML for keywords and readability.</td></tr>
+            <tr><td>Off-Page SEO</td><td>Improving authority via backlinks from other sites.</td></tr>
+            <tr><td>Technical SEO</td><td>Optimizing website speed, mobile usability, and crawlability.</td></tr>
+            <tr><td>Backlink</td><td>A link from another site pointing to your own, signaling credibility.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <img src="globe.png" alt="Cookies illustration" class="intro-image">
+    </section>
+  </main>
 
-            <h3>Concepts to know</h3>
-            <ul>
-                <li>tbc</li>
-                <li>tbc</li>
-                <li>tbc</li>
-            </ul>
-
-            <h3>Table of Contents</h3>
-            <ul class="toc">
-                <li><a href="page1.html">About Cookies</a></li>
-                <li><a href="page2.html">Accept or Deny?</a></li>
-            </ul>
-        </section>
-    </main> 
+  <script>
+    function toggleConcepts() {
+      const list = document.getElementById('conceptList');
+      const icon = document.getElementById('toggleIcon');
+      const isVisible = list.style.display === 'block';
+      list.style.display = isVisible ? 'none' : 'block';
+      icon.textContent = isVisible ? '+' : '−';
+    }
+  </script>
 </body>
 </html>

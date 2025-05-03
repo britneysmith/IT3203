@@ -1,4 +1,4 @@
-// Quiz questions with types and correct answers
+// questions
 const questions = [
     {
       question: "What is the primary function of a website cookie?",
@@ -21,7 +21,7 @@ const questions = [
       correct: "Malware cookie"
     },
     {
-      type: "text", // fill-in-the-blank question
+      type: "text", // fill in blank question
       question: "Fill in the blank: Cookies can help websites remember your login details and __________.",
       correct: "preferences"
     },
@@ -48,9 +48,35 @@ const questions = [
         "Your browsing data might be shared with third parties",
         "You may see more targeted ads based on your activity"
       ]
+    },
+    {
+      question: "What does SEO stand for?",
+      options: [
+        "Search Engine Operation",
+        "Search Efficiency Optimization",
+        "Search Engine Optimization",
+        "Systematic Engine Output"
+      ],
+      correct: "Search Engine Optimization"
+    },
+    {
+      question: "Which of the following is an example of off-page SEO?",
+      options: [
+        "Writing keyword-rich blog posts",
+        "Adding alt text to images",
+        "Getting backlinks from other websites",
+        "Improving mobile responsiveness"
+      ],
+      correct: "Getting backlinks from other websites"
+    },
+    {
+      question: "Fill in the blank: Technical SEO focuses on site speed, __________, and security.",
+      type: "text",
+      correct: "mobile usability"
     }
+    
   ];
-  //setting up javascript actions
+  //js actions
   const quizContainer = document.querySelector(".quiz-container");
   const questionElement = document.querySelector(".question");
   const optionsContainer = document.querySelector(".options");
@@ -63,7 +89,7 @@ const questions = [
     const currentQuestion = questions[currentQuestionIndex];
     questionElement.textContent = currentQuestion.question;
     optionsContainer.innerHTML = "";
-  //fill in the blank
+  //fill in blank
     if (currentQuestion.type === "text") {
       const input = document.createElement("input");
       input.type = "text";
@@ -73,7 +99,7 @@ const questions = [
         currentQuestion.options.forEach(option => {
           const div = document.createElement("div");
           div.className = "option";
-         //checkbox or multiple answer question 
+         //checkbox, multiple answer question 
           const label = document.createElement("label");
           label.style.cursor = "pointer";
           
@@ -157,7 +183,7 @@ const questions = [
     }
   }
   
-//score and answer key page actions
+//score and answer key actions
   function showResults() {
     let resultHTML = `<h2>You scored ${score} out of ${questions.length}</h2>`;
   
@@ -184,6 +210,6 @@ const questions = [
   
   submitBtn.addEventListener("click", handleNextQuestion);
   
-  // Show the first question on page load
+  // show first question on load
   showQuestion();
   

@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Quiz</title>
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Byte Sized Cookies</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">What are they?</a></li>
-                <li><a href="accept.html">Should you accept them?</a></li>
-                <li><a href="references.html">References</a></li>
-                <li><a href="quiz.html">Quiz</a></li>                
-            </ul>
-        </nav>
-    </header>
-    <div class="quiz-container">
-        <h1 class="quiz-title">Pop Quiz!</h1>
-        <div class="question-container">
-            <h3 class="question">question 1</h3>
-            <ul class="options">
-              <li class="option">1</li>
-              <li class="option">2</li>
-              <li class="option">3</li>
-              <li class="option">4</li>
-            </ul>
-        </div>
-        <button class="submit-btn">Next Question</button>     
-    </div>
-    <script src="quiz.js"></script>
+  <header>
+    <nav class="navbar">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <h1 class="logo">Byte Sized Cookies</h1>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">Cookies</a></li>
+        <li><a href="accept.html">SEO</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header> 
+  <!-- quiz setup -->
+   <div class="quiz-container">
+       <h1 class="quiz-title">Pop Quiz!</h1>
+       <div class="question-container">
+           <h3 class="question">question 1</h3>
+           <ul class="options">
+             <li class="option">1</li>
+             <li class="option">2</li>
+             <li class="option">3</li>
+             <li class="option">4</li>
+           </ul>
+       </div>
+       <button class="submit-btn">Next Question</button>    
+   </div>
+   <script src="quiz.js"></script>
 </body>
 </html>

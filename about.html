@@ -1,36 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What are they?</title>
-    <link rel="stylesheet" href="styles.css">
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Cookies</title>
+ <link rel="stylesheet" href="styles.css" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Byte Sized Cookies</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">What are they?</a></li>
-                <li><a href="accept.html">Should you accept them? </a></li>
-                <li><a href="references.html">References</a></li>
-                <li><a href="quiz.html">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <input type="checkbox" id="check">
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <h1 class="logo">Byte Sized Cookies</h1>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">Cookies</a></li>
+        <li><a href="accept.html">SEO</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>  
 
-    <main>
-        <section>
-            <h2>Internet Cookies</h2>
-            <p>Cookies are bits of data that are sent to and from your browser to identify you. When you open a website, 
-                your browser sends a piece of data to the web server hosting that website. This data usually appears as 
-                strings of numbers and letters in a text file. Every time you access a new website, a cookie is created
-                and placed in a temporary folder on your device. From here, cookies try to match your preferences for what 
-                you want to read, see, or purchase.
-            </p>
-        </section>
-    </main>
+   <main>
+       <section>
+        <img src="cookies.webp" alt="cookies-pic" class="cookies-image" width="600" 
+        height="300" />
+        <div class="cookie-section">
+          <h2>What Are Browsing Cookies? 🍪</h2>
+        <p>
+        Browsing cookies are small text files stored on your device by websites you visit. They handle many tasks. Think about remembering your login details, tracking your browsing preferences, and improving your browsing experience in general. According to Microsoft, cookies can enhance website functionality and reduce the need to enter information during each visit all over again. They also help websites load faster and personalize content for you using your previous interactions as a guide.
+        </p>
+      </div>
+      
+        <h2>Types of Cookies</h2>
+        <p>
+        There are different types of cookies which all serve a specific function. The most common are:
+        </p>
+        <ul>
+          <li><strong>First-party cookies:</strong> Set by the website you’re visiting. They store information like your login credentials or language preferences.</li>
+          <li><strong>Third-party cookies:</strong> Placed by websites other than the one you're visiting, advertisers use these to track your behavior across multiple sites.</li>
+          <li><strong>Session cookies:</strong> Temporary cookies that disappear when you close your browser. They keep your session active, such as staying logged in while browsing.</li>
+          <li><strong>Persistent cookies:</strong> Stored on your device for a set period, even after the browser is closed. They're used to remember your settings long-term.</li>
+        </ul>
+        
+        <h2>Are Cookies Safe?</h2>
+        <p>
+        Don't worry, cookies themselves won't harm you. There's no way for them to infect your device with viruses or malware. However, some third-party cookies do raise some privacy concerns. Norton warns that advertisers can actually build profiles based on your browsing habits, which can feel invasive. While cookies help websites run smoothly, they also contribute to extensive tracking, sometimes without users realizing it.
+        </p>
+        
+        <h2>Should You Accept Cookies?</h2>
+        <p>
+        Whether you should accept cookies depends on your priorities. If you're someone who likes convenience when it comes to personalized content, saved login info, and/or faster page loads, accepting cookies can improve your browsing experience. On the other hand, if you care about privacy, it’s good to be careful. Many websites now offer cookie consent tools that let you accept only essential cookies while rejecting tracking ones.
+        </p>
+        
+        <h2>How to Manage Cookies</h2>
+        <p>
+        You can manage or delete cookies through your browser settings. Most browsers allow you to block third-party cookies, clear stored cookies, or set preferences for specific websites. Also, privacy-focused browsers and extensions offer advanced control over cookie tracking.
+        </p>
+           
+       </section>
+   </main>
 
 </body>
 </html>
